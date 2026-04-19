@@ -1,0 +1,45 @@
+
+> swaggle@0.1.0 scrape /Users/rushilkelapure/Downloads/swaggle
+> tsx scraper/run.ts
+
+Swaggle scraper ▶ starting (full run)
+▶ IAC EMS National championships
+  845 IAC national rows
+▶ IAC EMS Regionals (this can take a bit)
+    IAC regional: 20/438 sheets (738 rows so far)
+    IAC regional: 40/438 sheets (1295 rows so far)
+    IAC regional: 60/438 sheets (1835 rows so far)
+    IAC regional: 80/438 sheets (2519 rows so far)
+    IAC regional: 100/438 sheets (3475 rows so far)
+    IAC regional: 120/438 sheets (4059 rows so far)
+    IAC regional: 140/438 sheets (4532 rows so far)
+    IAC regional: 160/438 sheets (5115 rows so far)
+    IAC regional: 180/438 sheets (5892 rows so far)
+    IAC regional: 200/438 sheets (6798 rows so far)
+    IAC regional: 220/438 sheets (7567 rows so far)
+    IAC regional: 240/438 sheets (8076 rows so far)
+    IAC regional: 260/438 sheets (8592 rows so far)
+    IAC regional: 280/438 sheets (9561 rows so far)
+    IAC regional: 300/438 sheets (10866 rows so far)
+    IAC regional: 320/438 sheets (11751 rows so far)
+    IAC regional: 340/438 sheets (12732 rows so far)
+    IAC regional: 360/438 sheets (13358 rows so far)
+    IAC regional: 380/438 sheets (14277 rows so far)
+    IAC regional: 400/438 sheets (14973 rows so far)
+    IAC regional: 420/438 sheets (15872 rows so far)
+    IAC regional: done (438 sheets, 16746 rows)
+  16746 IAC regional rows
+▶ IHO 2025 roster
+  434 IHO attendees
+▶ IGC 2024 roster
+  310 IGC attendees
+▶ NSF Geography Bee
+  0 NSF rows
+▶ Manual overrides: 15 players
+----
+  history 2026 nationals qualifiers: 2194
+  geo 2026 nationals qualifiers:     2536
+  IGC-qualified:                     314
+  IHO-qualified:                     446
+  total players in dataset:          8873
+▶ wrote /Users/rushilkelapure/Downloads/swaggle/src/data/results.json

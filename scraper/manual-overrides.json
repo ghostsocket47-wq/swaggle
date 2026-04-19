@@ -1,0 +1,51 @@
+{
+  "_comment": "Manual overrides (emptied — use this file to patch scraper gaps; entries merged last and are authoritative)",
+  "sources": [
+    {
+      "url": "https://www.iacompetitions.com/emshistorybee/",
+      "fetched": "2026-04-18",
+      "notes": "IAC National History Bee landing page — regional results scattered across per-regional pages."
+    },
+    {
+      "url": "https://www.northsouth.org/regional-contests/regional-placements/",
+      "fetched": "2026-04-18",
+      "notes": "NSF regional placements index."
+    },
+    {
+      "url": "https://northsouth.org/public/USContests/Finals/geography",
+      "fetched": "2026-04-18",
+      "notes": "NSF Senior Geography Bee national finals."
+    },
+    {
+      "url": "https://geochampionships.com/about/whos-attending/",
+      "fetched": "2026-04-18",
+      "notes": "IGC 2026 attending students."
+    },
+    {
+      "url": "https://www.historyolympiad.com/about/whos-attending/",
+      "fetched": "2026-04-18",
+      "notes": "IHO 2025 Paris attending students."
+    }
+  ],
+  "players": [
+    {
+      "id": "rushil-kelapure",
+      "name": "Rushil Kelapure",
+      "madeHistoryNationals2026": false,
+      "madeGeoNationals2026": true,
+      "qualifications": { "ihoAttended": false, "ihoEligible": true, "igcAttended": false, "igcEligible": true },
+      "results": [
+        {
+          "year": 2025,
+          "grade": 7,
+          "circuit": "NSF",
+          "subject": "geo",
+          "level": "national",
+          "event": "NSF Senior Geography Bee National 2025",
+          "placement": 13,
+          "qualifiedToNationals": true
+        }
+      ]
+    }
+  ]
+}

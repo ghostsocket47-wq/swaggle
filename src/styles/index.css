@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply bg-canvas text-ink font-body;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .chip {
+    @apply inline-flex items-center rounded px-1.5 py-0.5 text-[11px] font-medium uppercase tracking-wide;
+  }
+  .chip-blue {
+    @apply chip bg-blue-500/15 text-blue-300 border border-blue-500/30;
+  }
+  .chip-muted {
+    @apply chip bg-white/5 text-muted border border-white/5;
+  }
+  .card {
+    @apply bg-panel border border-border rounded-lg;
+  }
+}
