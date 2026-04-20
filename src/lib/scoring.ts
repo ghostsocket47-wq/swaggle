@@ -6,39 +6,41 @@ export const IHO_ELIGIBLE_BONUS = 25;
 export const IGC_ATTENDED_BONUS = 15;
 export const IGC_ELIGIBLE_BONUS = 25;
 
-// Flat point values — no percentage multipliers. Explicit per-rank table,
-// with a big premium on #1 and meaningful weight for NSF finals.
+// National performance is now heavily weighted. Making Finals / Semis /
+// Quarters at nationals is a huge signal — regional wins are a rounding
+// error next to it.
 const POINTS = {
   IAC: {
-    national: { 1: 250, 2: 160, 3: 120, 4: 95, 5: 80, 6: 70, 7: 60, 8: 52, 9: 45, 10: 40 },
+    national: { 1: 500, 2: 340, 3: 260, 4: 210, 5: 180, 6: 155, 7: 135, 8: 120, 9: 108, 10: 95 },
     regional: { 1: 50, 2: 30, 3: 18 },
   },
   NSF: {
-    national: { 1: 225, 2: 145, 3: 110, 4: 88, 5: 75, 6: 65, 7: 55, 8: 48, 9: 42, 10: 38 },
+    national: { 1: 450, 2: 310, 3: 240, 4: 195, 5: 168, 6: 145, 7: 125, 8: 110, 9: 100, 10: 90 },
     regional: { 1: 40, 2: 25, 3: 15 },
   },
 } as const;
 
-// Playoff boost at nationals — ADDITIVE to placement points.
+// Playoff boost at nationals — ADDITIVE on top of placement points.
+// These are now very large: making the Finals stage alone doubles your
+// mid-pack placement score.
 const PLAYOFF_BOOST = {
-  finalist: 20, // made Finals (top 10 at IAC / top 10 at NSF)
-  semifinalist: 15, // made Semis (11-24)
-  quarterfinalist: 8, // made Quarters (25-48)
+  finalist: 80, // made Finals
+  semifinalist: 50, // made Semis (didn't advance to Finals)
+  quarterfinalist: 30, // made Quarters (didn't advance to Semis)
 } as const;
 
 // Fixed semi/quarter placement buckets — used when placement > 10.
 function nationalPointsForBucket(circuit: 'IAC' | 'NSF', placement: number): number {
   if (placement <= 10) return 0; // handled by explicit table
   if (placement <= 24) {
-    // Smooth decline from #11 down to #24 so just-missing top-10 is
-    // rewarded closer to #10 (no hard cliff).
-    const top = circuit === 'IAC' ? 38 : 35; // roughly #11
-    const bot = circuit === 'IAC' ? 22 : 20; // roughly #24
+    // Smooth decline from #11 down to #24 (Semifinalist range).
+    const top = circuit === 'IAC' ? 85 : 78; // roughly #11
+    const bot = circuit === 'IAC' ? 55 : 50; // roughly #24
     const t = (placement - 11) / (24 - 11);
     return Math.round(top - (top - bot) * t);
   }
-  if (placement <= 48) return circuit === 'IAC' ? 18 : 16; // quarterfinalist
-  return circuit === 'IAC' ? 10 : 9; // made nationals
+  if (placement <= 48) return circuit === 'IAC' ? 45 : 40; // quarterfinalist
+  return circuit === 'IAC' ? 25 : 22; // made nationals
 }
 
 export function resultPoints(r: Result): number {
