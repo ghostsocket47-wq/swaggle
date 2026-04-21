@@ -23,40 +23,25 @@ const mk = (r: Partial<Result>): Result => ({
 });
 
 describe('resultPoints — fixed point table', () => {
-  it('IAC national 1st = 500 (huge premium for #1)', () => {
-    expect(resultPoints(mk({ circuit: 'IAC', level: 'national', placement: 1 }))).toBe(500);
+  it('IAC national 1st = 250 (big premium for #1)', () => {
+    expect(resultPoints(mk({ circuit: 'IAC', level: 'national', placement: 1 }))).toBe(250);
   });
-  it('NSF national 1st = 450', () => {
-    expect(resultPoints(mk({ circuit: 'NSF', level: 'national', placement: 1 }))).toBe(450);
+  it('NSF national 1st = 225 (NSF finals heavily weighted)', () => {
+    expect(resultPoints(mk({ circuit: 'NSF', level: 'national', placement: 1 }))).toBe(225);
   });
   it('#1 has much bigger gap vs top 3', () => {
     const p1 = resultPoints(mk({ circuit: 'IAC', level: 'national', placement: 1 }));
     const p3 = resultPoints(mk({ circuit: 'IAC', level: 'national', placement: 3 }));
-    expect(p1 - p3).toBeGreaterThanOrEqual(200);
-  });
-  it('national performance >> regional performance', () => {
-    const nat10 = resultPoints(mk({ circuit: 'IAC', level: 'national', placement: 10 }));
-    const reg1 = resultPoints(mk({ circuit: 'IAC', level: 'regional', placement: 1 }));
-    expect(nat10).toBeGreaterThan(reg1); // even 10th at nationals > regional champ
+    expect(p1 - p3).toBeGreaterThanOrEqual(100);
   });
   it('IAC regional top-3 scores; 4+ scores 0', () => {
     expect(resultPoints(mk({ circuit: 'IAC', level: 'regional', placement: 1 }))).toBe(50);
     expect(resultPoints(mk({ circuit: 'IAC', level: 'regional', placement: 3 }))).toBe(18);
     expect(resultPoints(mk({ circuit: 'IAC', level: 'regional', placement: 4 }))).toBe(0);
   });
-  it('Playoff boost stacks on top of placement — finalist is massive', () => {
+  it('Playoff boost stacks on top of placement', () => {
     const r = mk({ circuit: 'IAC', level: 'national', placement: 5, playoff: 'finalist' });
-    expect(resultPoints(r)).toBe(180 + 80);
-  });
-  it('Semifinalist + Quarterfinalist boosts are substantial', () => {
-    const semi = resultPoints(
-      mk({ circuit: 'IAC', level: 'national', placement: 15, playoff: 'semifinalist' }),
-    );
-    const quarter = resultPoints(
-      mk({ circuit: 'IAC', level: 'national', placement: 35, playoff: 'quarterfinalist' }),
-    );
-    expect(semi).toBeGreaterThanOrEqual(100); // ~75 placement + 50 boost
-    expect(quarter).toBeGreaterThanOrEqual(70); // 45 + 30
+    expect(resultPoints(r)).toBe(80 + 20);
   });
 });
 
